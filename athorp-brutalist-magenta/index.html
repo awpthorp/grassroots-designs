@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Thorp — Creative Technologist</title>
+    <meta name="description" content="Creative technologist building digital products, businesses, and brands across Dubai and the UK.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --white: #f5f0f5;
+            --accent: #ff0080;
+            --grey: #666;
+            --border: 2px solid var(--black);
+
+            --font-display: 'Bebas Neue', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-body: 'Space Grotesk', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: var(--black);
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--white);
+            color: var(--black);
+            overflow-x: hidden;
+            cursor: crosshair;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ANIMATIONS */
+        @keyframes glitch {
+            0%, 90%, 100% { transform: translate(0); }
+            92% { transform: translate(-2px, 2px); }
+            94% { transform: translate(2px, -2px); }
+            96% { transform: translate(-2px, -2px); }
+            98% { transform: translate(2px, 2px); }
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* CURSOR */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s, width 0.3s, height 0.3s;
+            mix-blend-mode: difference;
+        }
+
+        .cursor.hover {
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            opacity: 0.5;
+        }
+
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--white);
+            border-bottom: var(--border);
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--accent);
+            animation: blink 1s step-end infinite;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: var(--border);
+        }
+
+        .hero-left {
+            padding: 8rem 4rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: var(--border);
+            position: relative;
+        }
+
+        .hero-left::before {
+            content: 'AT';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: var(--font-display);
+            font-size: 50vw;
+            color: var(--black);
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .hero-name {
+            font-family: var(--font-display);
+            font-size: clamp(4rem, 12vw, 10rem);
+            line-height: 0.85;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-name:hover {
+            animation: glitch 0.3s ease;
+        }
+
+        .hero-title {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            margin-top: 2rem;
+            color: var(--grey);
+        }
+
+        .hero-title span {
+            color: var(--accent);
+        }
+
+        .hero-right {
+            background: var(--black);
+            color: var(--white);
+            padding: 8rem 4rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hero-intro {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            line-height: 1.8;
+            max-width: 400px;
+        }
+
+        .hero-status {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: #00ff00;
+            border-radius: 50%;
+            animation: blink 2s ease infinite;
+        }
+
+        /* MARQUEE */
+        .marquee-wrapper {
+            overflow: hidden;
+            background: var(--accent);
+            padding: 1rem 0;
+            border-bottom: var(--border);
+        }
+
+        .marquee {
+            display: flex;
+            animation: marquee 20s linear infinite;
+        }
+
+        .marquee-item {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--black);
+            padding: 0 3rem;
+            white-space: nowrap;
+        }
+
+        .marquee-item::after {
+            content: '//';
+            margin-left: 3rem;
+        }
+
+        /* ABOUT */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            border-bottom: var(--border);
+        }
+
+        .about-label {
+            padding: 4rem;
+            border-right: var(--border);
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .about-label h2 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+        }
+
+        .about-content {
+            padding: 4rem;
+        }
+
+        .about-text {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-bottom: 3rem;
+        }
+
+        .about-text strong {
+            color: var(--accent);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .skill {
+            padding: 1rem;
+            border: var(--border);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .skill:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        /* WORK */
+        .work {
+            padding: 4rem;
+            border-bottom: var(--border);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+            border-bottom: var(--border);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 4rem;
+        }
+
+        .section-count {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            color: var(--grey);
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .work-item {
+            border: var(--border);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+            display: block;
+        }
+
+        .work-item:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 8px 8px 0 var(--black);
+        }
+
+        .work-image {
+            aspect-ratio: 16/10;
+            background: var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border-bottom: var(--border);
+        }
+
+        .work-info {
+            padding: 1.5rem;
+        }
+
+        .work-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .work-badge {
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            padding: 0.25rem 0.5rem;
+            background: var(--accent);
+            color: var(--black);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .work-desc {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--grey);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .work-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .work-tag {
+            font-family: var(--font-mono);
+            font-size: 0.625rem;
+            text-transform: uppercase;
+            padding: 0.25rem 0.5rem;
+            border: 1px solid var(--grey);
+            color: var(--grey);
+        }
+
+        /* CONTACT */
+        .contact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: var(--border);
+        }
+
+        .contact-left {
+            padding: 4rem;
+            background: var(--black);
+            color: var(--white);
+            border-right: var(--border);
+        }
+
+        .contact-title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .contact-title span {
+            color: var(--accent);
+        }
+
+        .contact-text {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            line-height: 1.8;
+            color: var(--grey);
+        }
+
+        .contact-right {
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem;
+            border: var(--border);
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            transition: all 0.3s;
+        }
+
+        .contact-link:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .contact-link span {
+            font-size: 1.25rem;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--grey);
+        }
+
+        .footer-time {
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-left {
+                border-right: none;
+                border-bottom: var(--border);
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .about-label {
+                border-right: none;
+                border-bottom: var(--border);
+            }
+
+            .about-label h2 {
+                writing-mode: horizontal-tb;
+                transform: none;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-left {
+                border-right: none;
+                border-bottom: var(--border);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            nav {
+                gap: 1rem;
+            }
+
+            .hero-left, .hero-right, .about-content, .work, .contact-left, .contact-right {
+                padding: 3rem 1.5rem;
+            }
+
+            .cursor {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor"></div>
+
+    <header>
+        <div class="logo">@awpthorp<span>_</span></div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#work">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-left">
+            <h1 class="hero-name">ALEX<br>THORP</h1>
+            <p class="hero-title">Creative Technologist <span>//</span> Dubai & UK</p>
+        </div>
+        <div class="hero-right">
+            <p class="hero-intro">
+                Creative technologist building at the intersection of code, design, and business. I ship products, run agencies, and make things that work — across Dubai and the UK.
+            </p>
+            <div class="hero-status">
+                <span class="status-dot"></span>
+                Building in public
+            </div>
+        </div>
+    </section>
+
+    <div class="marquee-wrapper">
+        <div class="marquee">
+            <span class="marquee-item">Software Dev</span>
+            <span class="marquee-item">Digital Marketing</span>
+            <span class="marquee-item">Startups</span>
+            <span class="marquee-item">Social Media</span>
+            <span class="marquee-item">UAE Business</span>
+            <span class="marquee-item">Software Dev</span>
+            <span class="marquee-item">Digital Marketing</span>
+            <span class="marquee-item">Startups</span>
+            <span class="marquee-item">Social Media</span>
+            <span class="marquee-item">UAE Business</span>
+        </div>
+    </div>
+
+    <section class="about" id="about">
+        <div class="about-label">
+            <h2>ABOUT</h2>
+        </div>
+        <div class="about-content">
+            <p class="about-text">
+                I'm a <strong>creative technologist</strong> — part entrepreneur, part developer, part maker. I build digital products, run agencies, and ship SaaS tools. Whatever the project, I focus on creating things that actually work.
+            </p>
+            <p class="about-text">
+                Currently running <strong>Grassroots Creative</strong> (digital marketing agency), building <strong>LaunchDubai</strong> (UAE startup guide), and shipping various products in the AI and automation space.
+            </p>
+            <div class="skills-grid">
+                <div class="skill">Software Dev</div>
+                <div class="skill">Digital Marketing</div>
+                <div class="skill">Social Media</div>
+                <div class="skill">Startups</div>
+                <div class="skill">UAE Business</div>
+                <div class="skill">AI / Automation</div>
+                <div class="skill">Growth</div>
+                <div class="skill">Product</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="work" id="work">
+        <div class="section-header">
+            <h2 class="section-title">PROJECTS</h2>
+            <span class="section-count">[007]</span>
+        </div>
+        <div class="work-grid">
+            <a href="https://launchdub.ai" target="_blank" class="work-item">
+                <div class="work-image">🚀</div>
+                <div class="work-info">
+                    <h3 class="work-title">LaunchDubai <span class="work-badge">Just Launched</span></h3>
+                    <p class="work-desc">Your ultimate guide to starting up in the UAE. Everything you need to know about launching a business in Dubai.</p>
+                    <div class="work-tags">
+                        <span class="work-tag">SaaS</span>
+                        <span class="work-tag">UAE</span>
+                        <span class="work-tag">Startups</span>
+                    </div>
+                </div>
+            </a>
+            <a href="https://poster.ly" target="_blank" class="work-item">
+                <div class="work-image">📱</div>
+                <div class="work-info">
+                    <h3 class="work-title">Posterly <span class="work-badge">Just Launched</span></h3>
+                    <p class="work-desc">Streamline your social media presence with automated scheduling and content management tools.</p>
+                    <div class="work-tags">
+                        <span class="work-tag">SaaS</span>
+                        <span class="work-tag">Social Media</span>
+                        <span class="work-tag">Automation</span>
+                    </div>
+                </div>
+            </a>
+            <a href="https://gr.agency" target="_blank" class="work-item">
+                <div class="work-image">🏢</div>
+                <div class="work-info">
+                    <h3 class="work-title">GR Agency</h3>
+                    <p class="work-desc">A creative digital marketing agency specialising in digital ads for businesses in the UAE and beyond.</p>
+                    <div class="work-tags">
+                        <span class="work-tag">Agency</span>
+                        <span class="work-tag">Marketing</span>
+                        <span class="work-tag">UAE</span>
+                    </div>
+                </div>
+            </a>
+            <a href="https://transcriber.ae" target="_blank" class="work-item">
+                <div class="work-image">💬</div>
+                <div class="work-info">
+                    <h3 class="work-title">WhatsApp Transcriber</h3>
+                    <p class="work-desc">AI-powered transcription service for WhatsApp voice notes, making communication more accessible.</p>
+                    <div class="work-tags">
+                        <span class="work-tag">AI</span>
+                        <span class="work-tag">Tool</span>
+                        <span class="work-tag">WhatsApp</span>
+                    </div>
+                </div>
+            </a>
+            <a href="https://wellbfestival.com" target="_blank" class="work-item">
+                <div class="work-image">🎉</div>
+                <div class="work-info">
+                    <h3 class="work-title">Well B Festival <span class="work-badge">Just Launched</span></h3>
+                    <p class="work-desc">An exciting wellness and lifestyle festival bringing together health, fitness, and entertainment in the UAE.</p>
+                    <div class="work-tags">
+                        <span class="work-tag">Events</span>
+                        <span class="work-tag">Wellness</span>
+                        <span class="work-tag">UAE</span>
+                    </div>
+                </div>
+            </a>
+            <a href="https://grassrootsboxing.me" target="_blank" class="work-item">
+                <div class="work-image">🥊</div>
+                <div class="work-info">
+                    <h3 class="work-title">Grassroots Boxing</h3>
+                    <p class="work-desc">Grassroots Boxing in the UAE. White collar, amateur and pro bouts.</p>
+                    <div class="work-tags">
+                        <span class="work-tag">Sports</span>
+                        <span class="work-tag">Events</span>
+                        <span class="work-tag">UAE</span>
+                    </div>
+                </div>
+            </a>
+            <a href="https://triakalamata.com" target="_blank" class="work-item">
+                <div class="work-image">🫒</div>
+                <div class="work-info">
+                    <h3 class="work-title">Tria Kalamata</h3>
+                    <p class="work-desc">Authentic Greek olive oil sourced directly from Kalamata, offering premium quality and rich flavour.</p>
+                    <div class="work-tags">
+                        <span class="work-tag">E-commerce</span>
+                        <span class="work-tag">Food</span>
+                        <span class="work-tag">UK</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-left">
+            <h2 class="contact-title">LET'S<br><span>CONNECT</span></h2>
+            <p class="contact-text">
+                Got a project idea? Want to collaborate? Or just want to say hi? I'm always open to interesting conversations.
+            </p>
+        </div>
+        <div class="contact-right">
+            <div class="contact-links">
+                <a href="https://twitter.com/awpthorp" class="contact-link" target="_blank">
+                    X / Twitter — @awpthorp
+                    <span>↗</span>
+                </a>
+                <a href="https://github.com/awpthorp" class="contact-link" target="_blank">
+                    GitHub — @awpthorp
+                    <span>↗</span>
+                </a>
+                <a href="https://instagram.com/athorp" class="contact-link" target="_blank">
+                    Instagram — @athorp
+                    <span>↗</span>
+                </a>
+                <a href="https://linkedin.com/in/awpthorp" class="contact-link" target="_blank">
+                    LinkedIn — /awpthorp
+                    <span>↗</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <span>© 2024 Alex Thorp</span>
+        <span class="footer-time" id="time"></span>
+        <span>Dubai & UK</span>
+    </footer>
+
+    <script>
+        // CURSOR
+        const cursor = document.querySelector('.cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX - 10 + 'px';
+            cursor.style.top = e.clientY - 10 + 'px';
+        });
+
+        document.querySelectorAll('a, .work-item, .skill, .contact-link').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
+        // TIME
+        function updateTime() {
+            const now = new Date();
+            const options = { timeZone: 'Asia/Dubai', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+            document.getElementById('time').textContent = now.toLocaleTimeString('en-GB', options) + ' GST';
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+
+        // SMOOTH SCROLL
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // SCROLL ANIMATIONS
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.work-item, .skill').forEach((el, i) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = `all 0.5s ease ${i * 0.1}s`;
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
