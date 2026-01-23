@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grassroots Creative — Design Prototypes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            min-height: 100vh;
+            padding: 4rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.125rem;
+            margin-bottom: 4rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: #141414;
+            border: 1px solid #222;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .card:hover {
+            border-color: #444;
+            transform: translateY(-4px);
+            background: #1a1a1a;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-desc {
+            color: #888;
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            padding: 0.375rem 0.75rem;
+            background: #222;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            color: #999;
+        }
+
+        .card:nth-child(1) .card-title { color: #ff3d00; }
+        .card:nth-child(2) .card-title { color: #a29bfe; }
+        .card:nth-child(3) .card-title { color: #8B7355; }
+        .card:nth-child(4) .card-title { color: #E85D04; }
+        .card:nth-child(5) .card-title { color: #FFE135; }
+        .card:nth-child(6) .card-title { color: #FF0000; }
+        .card:nth-child(7) .card-title { color: #00f0ff; }
+
+        .arrow {
+            display: inline-block;
+            margin-left: 0.5rem;
+            transition: transform 0.3s;
+        }
+
+        .card:hover .arrow {
+            transform: translateX(4px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Grassroots Creative</h1>
+        <p class="subtitle">7 Design Prototypes — Choose your direction</p>
+
+        <div class="grid">
+            <a href="./grassroots-brutalist-prototype/" class="card">
+                <h2 class="card-title">Brutalist <span class="arrow">→</span></h2>
+                <p class="card-desc">Raw, grid-breaking, anti-corporate. Exposed structure, glitch effects, crosshair cursor. Unapologetically bold.</p>
+                <div class="card-tags">
+                    <span class="tag">Bebas Neue</span>
+                    <span class="tag">JetBrains Mono</span>
+                    <span class="tag">Black + Orange</span>
+                </div>
+            </a>
+
+            <a href="./grassroots-evolved-dark/" class="card">
+                <h2 class="card-title">Evolved Dark <span class="arrow">→</span></h2>
+                <p class="card-desc">Modern dark theme with floating orbs, gradient accents, and polished animations. Premium tech aesthetic.</p>
+                <div class="card-tags">
+                    <span class="tag">Outfit</span>
+                    <span class="tag">DM Sans</span>
+                    <span class="tag">Purple + Teal</span>
+                </div>
+            </a>
+
+            <a href="./grassroots-luxury-minimal/" class="card">
+                <h2 class="card-title">Luxury Minimal <span class="arrow">→</span></h2>
+                <p class="card-desc">High-end editorial feel. Generous whitespace, refined serif typography, subtle elegance. Timeless sophistication.</p>
+                <div class="card-tags">
+                    <span class="tag">Cormorant Garamond</span>
+                    <span class="tag">Manrope</span>
+                    <span class="tag">Cream + Warm</span>
+                </div>
+            </a>
+
+            <a href="./grassroots-retro-70s/" class="card">
+                <h2 class="card-title">Retro 70s <span class="arrow">→</span></h2>
+                <p class="card-desc">Warm, nostalgic, groovy. Vintage textures, rounded shapes, earthy palette. Approachable and friendly.</p>
+                <div class="card-tags">
+                    <span class="tag">Righteous</span>
+                    <span class="tag">Josefin Sans</span>
+                    <span class="tag">Orange + Mustard</span>
+                </div>
+            </a>
+
+            <a href="./grassroots-neo-playful/" class="card">
+                <h2 class="card-title">Neo-Playful <span class="arrow">→</span></h2>
+                <p class="card-desc">Bold primary colors, chunky borders, bouncy animations. Fun, energetic, impossible to ignore.</p>
+                <div class="card-tags">
+                    <span class="tag">Lilita One</span>
+                    <span class="tag">DM Sans</span>
+                    <span class="tag">Yellow + Blue + Pink</span>
+                </div>
+            </a>
+
+            <a href="./grassroots-swiss-structured/" class="card">
+                <h2 class="card-title">Swiss Structured <span class="arrow">→</span></h2>
+                <p class="card-desc">Clean grid system, precise spacing, Helvetica-inspired typography. Timeless, professional, clear.</p>
+                <div class="card-tags">
+                    <span class="tag">Inter</span>
+                    <span class="tag">12-Column Grid</span>
+                    <span class="tag">Black + White + Red</span>
+                </div>
+            </a>
+
+            <a href="./grassroots-y2k-cyber/" class="card">
+                <h2 class="card-title">Y2K Cyber <span class="arrow">→</span></h2>
+                <p class="card-desc">Holographic gradients, chrome effects, futuristic 2000s aesthetic. Cutting-edge and digital-native.</p>
+                <div class="card-tags">
+                    <span class="tag">Orbitron</span>
+                    <span class="tag">Exo 2</span>
+                    <span class="tag">Holographic + Chrome</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
