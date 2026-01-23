@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Thorp — Creative Technologist</title>
+    <meta name="description" content="Alex Thorp - Creative technologist, developer, and digital strategist based in Dubai.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --white: #f5f5f0;
+            --accent: #ff3d00;
+            --grey: #666;
+            --border: 2px solid var(--black);
+
+            --font-display: 'Bebas Neue', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-body: 'Space Grotesk', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: var(--black);
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--white);
+            color: var(--black);
+            overflow-x: hidden;
+            cursor: crosshair;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ANIMATIONS */
+        @keyframes glitch {
+            0%, 90%, 100% { transform: translate(0); }
+            92% { transform: translate(-2px, 2px); }
+            94% { transform: translate(2px, -2px); }
+            96% { transform: translate(-2px, -2px); }
+            98% { transform: translate(2px, 2px); }
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* CURSOR */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s, width 0.3s, height 0.3s;
+            mix-blend-mode: difference;
+        }
+
+        .cursor.hover {
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            opacity: 0.5;
+        }
+
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--white);
+            border-bottom: var(--border);
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--accent);
+            animation: blink 1s step-end infinite;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: var(--border);
+        }
+
+        .hero-left {
+            padding: 8rem 4rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: var(--border);
+            position: relative;
+        }
+
+        .hero-left::before {
+            content: 'AT';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: var(--font-display);
+            font-size: 50vw;
+            color: var(--black);
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .hero-name {
+            font-family: var(--font-display);
+            font-size: clamp(4rem, 12vw, 10rem);
+            line-height: 0.85;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-name:hover {
+            animation: glitch 0.3s ease;
+        }
+
+        .hero-title {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            margin-top: 2rem;
+            color: var(--grey);
+        }
+
+        .hero-title span {
+            color: var(--accent);
+        }
+
+        .hero-right {
+            background: var(--black);
+            color: var(--white);
+            padding: 8rem 4rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hero-intro {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            line-height: 1.8;
+            max-width: 400px;
+        }
+
+        .hero-status {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: #00ff00;
+            border-radius: 50%;
+            animation: blink 2s ease infinite;
+        }
+
+        /* MARQUEE */
+        .marquee-wrapper {
+            overflow: hidden;
+            background: var(--accent);
+            padding: 1rem 0;
+            border-bottom: var(--border);
+        }
+
+        .marquee {
+            display: flex;
+            animation: marquee 20s linear infinite;
+        }
+
+        .marquee-item {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--black);
+            padding: 0 3rem;
+            white-space: nowrap;
+        }
+
+        .marquee-item::after {
+            content: '//';
+            margin-left: 3rem;
+        }
+
+        /* ABOUT */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            border-bottom: var(--border);
+        }
+
+        .about-label {
+            padding: 4rem;
+            border-right: var(--border);
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .about-label h2 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+        }
+
+        .about-content {
+            padding: 4rem;
+        }
+
+        .about-text {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-bottom: 3rem;
+        }
+
+        .about-text strong {
+            color: var(--accent);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .skill {
+            padding: 1rem;
+            border: var(--border);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .skill:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        /* WORK */
+        .work {
+            padding: 4rem;
+            border-bottom: var(--border);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+            border-bottom: var(--border);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 4rem;
+        }
+
+        .section-count {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            color: var(--grey);
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .work-item {
+            border: var(--border);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+
+        .work-item:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 8px 8px 0 var(--black);
+        }
+
+        .work-image {
+            aspect-ratio: 16/10;
+            background: var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            color: var(--grey);
+            border-bottom: var(--border);
+        }
+
+        .work-info {
+            padding: 1.5rem;
+        }
+
+        .work-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .work-desc {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--grey);
+            margin-bottom: 1rem;
+        }
+
+        .work-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .work-tag {
+            font-family: var(--font-mono);
+            font-size: 0.625rem;
+            text-transform: uppercase;
+            padding: 0.25rem 0.5rem;
+            border: 1px solid var(--grey);
+            color: var(--grey);
+        }
+
+        /* CONTACT */
+        .contact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: var(--border);
+        }
+
+        .contact-left {
+            padding: 4rem;
+            background: var(--black);
+            color: var(--white);
+            border-right: var(--border);
+        }
+
+        .contact-title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .contact-title span {
+            color: var(--accent);
+        }
+
+        .contact-text {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            line-height: 1.8;
+            color: var(--grey);
+        }
+
+        .contact-right {
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem;
+            border: var(--border);
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            transition: all 0.3s;
+        }
+
+        .contact-link:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .contact-link span {
+            font-size: 1.25rem;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--grey);
+        }
+
+        .footer-time {
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-left {
+                border-right: none;
+                border-bottom: var(--border);
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .about-label {
+                border-right: none;
+                border-bottom: var(--border);
+            }
+
+            .about-label h2 {
+                writing-mode: horizontal-tb;
+                transform: none;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-left {
+                border-right: none;
+                border-bottom: var(--border);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            nav {
+                gap: 1rem;
+            }
+
+            .hero-left, .hero-right, .about-content, .work, .contact-left, .contact-right {
+                padding: 3rem 1.5rem;
+            }
+
+            .cursor {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor"></div>
+
+    <header>
+        <div class="logo">athorp<span>_</span></div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#work">Work</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-left">
+            <h1 class="hero-name">ALEX<br>THORP</h1>
+            <p class="hero-title">Creative Technologist <span>//</span> Dubai</p>
+        </div>
+        <div class="hero-right">
+            <p class="hero-intro">
+                I build digital experiences that sit at the intersection of design, technology, and strategy. Currently helping brands grow through creative problem-solving and technical execution.
+            </p>
+            <div class="hero-status">
+                <span class="status-dot"></span>
+                Available for projects
+            </div>
+        </div>
+    </section>
+
+    <div class="marquee-wrapper">
+        <div class="marquee">
+            <span class="marquee-item">Development</span>
+            <span class="marquee-item">Design</span>
+            <span class="marquee-item">Strategy</span>
+            <span class="marquee-item">Automation</span>
+            <span class="marquee-item">Growth</span>
+            <span class="marquee-item">Development</span>
+            <span class="marquee-item">Design</span>
+            <span class="marquee-item">Strategy</span>
+            <span class="marquee-item">Automation</span>
+            <span class="marquee-item">Growth</span>
+        </div>
+    </div>
+
+    <section class="about" id="about">
+        <div class="about-label">
+            <h2>ABOUT</h2>
+        </div>
+        <div class="about-content">
+            <p class="about-text">
+                I'm a <strong>creative technologist</strong> based in Dubai, working at the intersection of design, development, and digital strategy. I help businesses and brands build products, automate workflows, and grow their online presence.
+            </p>
+            <p class="about-text">
+                With experience spanning <strong>web development</strong>, <strong>social media</strong>, <strong>paid advertising</strong>, and <strong>AI automation</strong>, I bring a full-stack approach to solving problems.
+            </p>
+            <div class="skills-grid">
+                <div class="skill">Web Dev</div>
+                <div class="skill">UI/UX</div>
+                <div class="skill">React</div>
+                <div class="skill">Node.js</div>
+                <div class="skill">Python</div>
+                <div class="skill">AI/ML</div>
+                <div class="skill">Automation</div>
+                <div class="skill">Strategy</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="work" id="work">
+        <div class="section-header">
+            <h2 class="section-title">SELECTED WORK</h2>
+            <span class="section-count">[004]</span>
+        </div>
+        <div class="work-grid">
+            <div class="work-item">
+                <div class="work-image">[ Project Image ]</div>
+                <div class="work-info">
+                    <h3 class="work-title">Grassroots Creative</h3>
+                    <p class="work-desc">Social media agency — branding, web, growth</p>
+                    <div class="work-tags">
+                        <span class="work-tag">Strategy</span>
+                        <span class="work-tag">Development</span>
+                        <span class="work-tag">Design</span>
+                    </div>
+                </div>
+            </div>
+            <div class="work-item">
+                <div class="work-image">[ Project Image ]</div>
+                <div class="work-info">
+                    <h3 class="work-title">Client Dashboard</h3>
+                    <p class="work-desc">Custom analytics & reporting platform</p>
+                    <div class="work-tags">
+                        <span class="work-tag">React</span>
+                        <span class="work-tag">Node.js</span>
+                        <span class="work-tag">API</span>
+                    </div>
+                </div>
+            </div>
+            <div class="work-item">
+                <div class="work-image">[ Project Image ]</div>
+                <div class="work-info">
+                    <h3 class="work-title">AI Transcriber</h3>
+                    <p class="work-desc">WhatsApp voice note transcription tool</p>
+                    <div class="work-tags">
+                        <span class="work-tag">Python</span>
+                        <span class="work-tag">OpenAI</span>
+                        <span class="work-tag">Automation</span>
+                    </div>
+                </div>
+            </div>
+            <div class="work-item">
+                <div class="work-image">[ Project Image ]</div>
+                <div class="work-info">
+                    <h3 class="work-title">Pricing Calculator</h3>
+                    <p class="work-desc">Interactive service pricing tool</p>
+                    <div class="work-tags">
+                        <span class="work-tag">Vue.js</span>
+                        <span class="work-tag">UI/UX</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-left">
+            <h2 class="contact-title">LET'S<br><span>BUILD</span><br>SOMETHING</h2>
+            <p class="contact-text">
+                Got a project in mind? Let's talk about how I can help bring your ideas to life.
+            </p>
+        </div>
+        <div class="contact-right">
+            <div class="contact-links">
+                <a href="mailto:alex@athorp.io" class="contact-link">
+                    alex@athorp.io
+                    <span>→</span>
+                </a>
+                <a href="https://linkedin.com" class="contact-link" target="_blank">
+                    LinkedIn
+                    <span>↗</span>
+                </a>
+                <a href="https://github.com/awpthorp" class="contact-link" target="_blank">
+                    GitHub
+                    <span>↗</span>
+                </a>
+                <a href="https://twitter.com" class="contact-link" target="_blank">
+                    Twitter
+                    <span>↗</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <span>© 2024 Alex Thorp</span>
+        <span class="footer-time" id="time"></span>
+        <span>Dubai, UAE</span>
+    </footer>
+
+    <script>
+        // CURSOR
+        const cursor = document.querySelector('.cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX - 10 + 'px';
+            cursor.style.top = e.clientY - 10 + 'px';
+        });
+
+        document.querySelectorAll('a, .work-item, .skill, .contact-link').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
+        // TIME
+        function updateTime() {
+            const now = new Date();
+            const options = { timeZone: 'Asia/Dubai', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+            document.getElementById('time').textContent = now.toLocaleTimeString('en-GB', options) + ' GST';
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+
+        // SMOOTH SCROLL
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // SCROLL ANIMATIONS
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.work-item, .skill').forEach((el, i) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = `all 0.5s ease ${i * 0.1}s`;
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
