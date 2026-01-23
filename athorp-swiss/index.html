@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alex Thorp — Creative Technologist</title>
-    <meta name="description" content="Alex Thorp - Creative technologist, developer, and digital strategist based in Dubai.">
+    <meta name="description" content="Creative technologist building digital products, businesses, and brands across Dubai and the UK.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -159,7 +159,7 @@
         .hero-title {
             font-size: 1.25rem;
             color: var(--grey-600);
-            max-width: 400px;
+            max-width: 450px;
         }
 
         .hero-info {
@@ -308,17 +308,36 @@
             color: var(--grey-400);
         }
 
+        .work-icon {
+            grid-column: 2 / 3;
+            font-size: 1.5rem;
+        }
+
         .work-name {
-            grid-column: 2 / 6;
-            font-size: 1.25rem;
+            grid-column: 3 / 6;
+            font-size: 1.125rem;
             font-weight: 600;
             letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .work-badge {
+            font-size: 0.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.25rem 0.5rem;
+            background: var(--red);
+            color: var(--white);
         }
 
         .work-desc {
             grid-column: 6 / 10;
-            font-size: 0.9375rem;
+            font-size: 0.875rem;
             color: var(--grey-600);
+            line-height: 1.5;
         }
 
         .work-tags {
@@ -458,8 +477,9 @@
             .work-header-left { grid-column: 1 / 13; }
             .work-header-right { grid-column: 1 / 13; }
 
-            .work-item { display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+            .work-item { display: flex; flex-direction: column; align-items: flex-start; gap: 0.75rem; }
             .work-arrow { display: none; }
+            .work-name { font-size: 1.25rem; }
 
             .contact-header { grid-column: 1 / 13; margin-bottom: 2rem; }
             .contact-content { grid-column: 1 / 13; }
@@ -485,7 +505,7 @@
             <div class="logo">Alex Thorp</div>
             <nav>
                 <a href="#about">About</a>
-                <a href="#work">Work</a>
+                <a href="#work">Projects</a>
                 <a href="#contact" class="nav-cta">Contact</a>
             </nav>
         </div>
@@ -497,17 +517,17 @@
                 <div class="hero-content">
                     <p class="hero-label">Creative Technologist</p>
                     <h1 class="hero-name">Alex Thorp</h1>
-                    <p class="hero-title">I build digital products, automate workflows, and help brands grow through creative problem-solving.</p>
+                    <p class="hero-title">Building products, brands, and businesses at the intersection of technology and creativity.</p>
                 </div>
                 <div class="hero-meta">
                     <div class="hero-info">
                         <div class="hero-info-item">
                             <div class="hero-info-label">Location</div>
-                            <div class="hero-info-value">Dubai, UAE</div>
+                            <div class="hero-info-value">Dubai & UK</div>
                         </div>
                         <div class="hero-info-item">
                             <div class="hero-info-label">Status</div>
-                            <div class="hero-info-value status-available">Available for projects</div>
+                            <div class="hero-info-value status-available">Building in public</div>
                         </div>
                     </div>
                 </div>
@@ -524,17 +544,17 @@
                 </div>
                 <div class="about-content">
                     <p class="about-text">
-                        I'm a creative technologist working at the intersection of design, development, and digital strategy. I help businesses build products, automate processes, and scale their online presence.
+                        I'm a creative technologist — part entrepreneur, part developer, part maker. I build digital products, run agencies, and ship SaaS tools across Dubai and the UK. Whatever the project, I focus on creating things that actually work.
                     </p>
                     <div class="skills-list">
-                        <div class="skill-item">Web Development</div>
-                        <div class="skill-item">UI/UX Design</div>
-                        <div class="skill-item">React / Next.js</div>
-                        <div class="skill-item">Node.js / Python</div>
+                        <div class="skill-item">Software Development</div>
+                        <div class="skill-item">Digital Marketing</div>
+                        <div class="skill-item">Social Media</div>
+                        <div class="skill-item">Startups</div>
+                        <div class="skill-item">UAE Business</div>
                         <div class="skill-item">AI & Automation</div>
-                        <div class="skill-item">Digital Strategy</div>
-                        <div class="skill-item">Paid Advertising</div>
-                        <div class="skill-item">Growth Marketing</div>
+                        <div class="skill-item">Growth</div>
+                        <div class="skill-item">Product</div>
                     </div>
                 </div>
             </div>
@@ -546,52 +566,89 @@
             <div class="work-header">
                 <div class="work-header-left">
                     <div class="section-number">02</div>
-                    <h2 class="section-title">Selected Work</h2>
+                    <h2 class="section-title">Projects</h2>
                 </div>
                 <div class="work-header-right">
-                    A selection of projects I've worked on — from full-stack applications to brand strategy.
+                    A selection of products, agencies, and brands I've built.
                 </div>
             </div>
             <div class="work-list">
-                <a href="#" class="work-item">
+                <a href="https://launchdub.ai" target="_blank" class="work-item">
                     <span class="work-number">01</span>
-                    <h3 class="work-name">Grassroots Creative</h3>
-                    <p class="work-desc">Social media agency — branding, web, strategy</p>
+                    <span class="work-icon">🚀</span>
+                    <h3 class="work-name">LaunchDubai <span class="work-badge">New</span></h3>
+                    <p class="work-desc">Your ultimate guide to starting up in the UAE</p>
                     <div class="work-tags">
-                        <span class="work-tag">Strategy</span>
-                        <span class="work-tag">Dev</span>
+                        <span class="work-tag">SaaS</span>
+                        <span class="work-tag">UAE</span>
                     </div>
-                    <span class="work-arrow">→</span>
+                    <span class="work-arrow">↗</span>
                 </a>
-                <a href="#" class="work-item">
+                <a href="https://poster.ly" target="_blank" class="work-item">
                     <span class="work-number">02</span>
-                    <h3 class="work-name">Client Dashboard</h3>
-                    <p class="work-desc">Custom analytics & reporting platform</p>
+                    <span class="work-icon">📱</span>
+                    <h3 class="work-name">Posterly <span class="work-badge">New</span></h3>
+                    <p class="work-desc">Automated social media scheduling and content management</p>
                     <div class="work-tags">
-                        <span class="work-tag">React</span>
-                        <span class="work-tag">API</span>
+                        <span class="work-tag">SaaS</span>
+                        <span class="work-tag">Social</span>
                     </div>
-                    <span class="work-arrow">→</span>
+                    <span class="work-arrow">↗</span>
                 </a>
-                <a href="#" class="work-item">
+                <a href="https://gr.agency" target="_blank" class="work-item">
                     <span class="work-number">03</span>
-                    <h3 class="work-name">AI Transcriber</h3>
-                    <p class="work-desc">WhatsApp voice note transcription tool</p>
+                    <span class="work-icon">🏢</span>
+                    <h3 class="work-name">GR Agency</h3>
+                    <p class="work-desc">Creative digital marketing agency for UAE businesses</p>
                     <div class="work-tags">
-                        <span class="work-tag">Python</span>
-                        <span class="work-tag">OpenAI</span>
+                        <span class="work-tag">Agency</span>
+                        <span class="work-tag">Marketing</span>
                     </div>
-                    <span class="work-arrow">→</span>
+                    <span class="work-arrow">↗</span>
                 </a>
-                <a href="#" class="work-item">
+                <a href="https://transcriber.ae" target="_blank" class="work-item">
                     <span class="work-number">04</span>
-                    <h3 class="work-name">Pricing Calculator</h3>
-                    <p class="work-desc">Interactive service pricing tool</p>
+                    <span class="work-icon">💬</span>
+                    <h3 class="work-name">WhatsApp Transcriber</h3>
+                    <p class="work-desc">AI-powered voice note transcription for WhatsApp</p>
                     <div class="work-tags">
-                        <span class="work-tag">Vue.js</span>
-                        <span class="work-tag">UI</span>
+                        <span class="work-tag">AI</span>
+                        <span class="work-tag">Tool</span>
                     </div>
-                    <span class="work-arrow">→</span>
+                    <span class="work-arrow">↗</span>
+                </a>
+                <a href="https://wellbfestival.com" target="_blank" class="work-item">
+                    <span class="work-number">05</span>
+                    <span class="work-icon">🎉</span>
+                    <h3 class="work-name">Well B Festival <span class="work-badge">New</span></h3>
+                    <p class="work-desc">Wellness and lifestyle festival in the UAE</p>
+                    <div class="work-tags">
+                        <span class="work-tag">Events</span>
+                        <span class="work-tag">Wellness</span>
+                    </div>
+                    <span class="work-arrow">↗</span>
+                </a>
+                <a href="https://grassrootsboxing.me" target="_blank" class="work-item">
+                    <span class="work-number">06</span>
+                    <span class="work-icon">🥊</span>
+                    <h3 class="work-name">Grassroots Boxing</h3>
+                    <p class="work-desc">White collar, amateur and pro boxing in UAE</p>
+                    <div class="work-tags">
+                        <span class="work-tag">Sports</span>
+                        <span class="work-tag">Events</span>
+                    </div>
+                    <span class="work-arrow">↗</span>
+                </a>
+                <a href="https://triakalamata.com" target="_blank" class="work-item">
+                    <span class="work-number">07</span>
+                    <span class="work-icon">🫒</span>
+                    <h3 class="work-name">Tria Kalamata</h3>
+                    <p class="work-desc">Premium Greek olive oil from Kalamata</p>
+                    <div class="work-tags">
+                        <span class="work-tag">E-commerce</span>
+                        <span class="work-tag">UK</span>
+                    </div>
+                    <span class="work-arrow">↗</span>
                 </a>
             </div>
         </div>
@@ -605,16 +662,11 @@
                     <h2 class="section-title">Contact</h2>
                 </div>
                 <div class="contact-content">
-                    <h3 class="contact-title">Let's work together</h3>
+                    <h3 class="contact-title">Let's connect</h3>
                     <div class="contact-links">
-                        <a href="mailto:alex@athorp.io" class="contact-link">
-                            <span class="contact-link-label">Email</span>
-                            <span class="contact-link-value">alex@athorp.io</span>
-                            <span class="contact-link-arrow">→</span>
-                        </a>
-                        <a href="https://linkedin.com" class="contact-link" target="_blank">
-                            <span class="contact-link-label">LinkedIn</span>
-                            <span class="contact-link-value">/in/alexthorp</span>
+                        <a href="https://twitter.com/awpthorp" class="contact-link" target="_blank">
+                            <span class="contact-link-label">X / Twitter</span>
+                            <span class="contact-link-value">@awpthorp</span>
                             <span class="contact-link-arrow">↗</span>
                         </a>
                         <a href="https://github.com/awpthorp" class="contact-link" target="_blank">
@@ -622,9 +674,14 @@
                             <span class="contact-link-value">@awpthorp</span>
                             <span class="contact-link-arrow">↗</span>
                         </a>
-                        <a href="https://twitter.com" class="contact-link" target="_blank">
-                            <span class="contact-link-label">Twitter</span>
-                            <span class="contact-link-value">@alexthorp</span>
+                        <a href="https://instagram.com/athorp" class="contact-link" target="_blank">
+                            <span class="contact-link-label">Instagram</span>
+                            <span class="contact-link-value">@athorp</span>
+                            <span class="contact-link-arrow">↗</span>
+                        </a>
+                        <a href="https://linkedin.com/in/awpthorp" class="contact-link" target="_blank">
+                            <span class="contact-link-label">LinkedIn</span>
+                            <span class="contact-link-value">/awpthorp</span>
                             <span class="contact-link-arrow">↗</span>
                         </a>
                     </div>
@@ -638,7 +695,7 @@
             <div class="footer-inner">
                 <span>© 2024 Alex Thorp</span>
                 <span class="footer-time" id="time"></span>
-                <span>Dubai, UAE</span>
+                <span>Dubai & UK</span>
             </div>
         </div>
     </footer>
