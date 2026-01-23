@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRASSROOTS CREATIVE — Rather Be Dead Than Unfollowed</title>
+    <meta name="description" content="Dubai's most unapologetically bold social media agency. Content-led, forward-thinking, results-obsessed.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Josefin+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-cream: #F5E6D3;
+            --bg-warm: #E8D5C4;
+            --brown: #8B4513;
+            --brown-dark: #5D2E0C;
+            --orange: #E85D04;
+            --orange-light: #F48C06;
+            --mustard: #D4A373;
+            --teal: #2A9D8F;
+            --rust: #BC4749;
+            --text: #3D2314;
+            --text-light: #6B4423;
+
+            --font-display: 'Righteous', cursive;
+            --font-body: 'Josefin Sans', sans-serif;
+
+            --radius: 20px;
+            --radius-lg: 40px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ::selection {
+            background: var(--orange);
+            color: var(--bg-cream);
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-cream);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* TEXTURE OVERLAY */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* ANIMATIONS */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-cream);
+            border-bottom: 3px solid var(--brown);
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            color: var(--brown-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        nav a {
+            font-family: var(--font-body);
+            font-size: 0.9375rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-light);
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--orange);
+        }
+
+        .nav-cta {
+            padding: 0.875rem 2rem;
+            background: var(--orange);
+            color: var(--bg-cream) !important;
+            border-radius: 100px;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            background: var(--brown-dark);
+            transform: scale(1.05);
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            padding: 10rem 4rem 6rem;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-shape {
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .hero-shape-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--mustard);
+            top: -100px;
+            right: -100px;
+            opacity: 0.5;
+        }
+
+        .hero-shape-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--orange-light);
+            bottom: 10%;
+            left: 10%;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-shape-3 {
+            width: 150px;
+            height: 150px;
+            background: var(--teal);
+            top: 30%;
+            right: 20%;
+            opacity: 0.6;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--brown);
+            color: var(--bg-cream);
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-radius: 100px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(3.5rem, 9vw, 7rem);
+            line-height: 1;
+            color: var(--brown-dark);
+            margin-bottom: 2rem;
+        }
+
+        .hero-title .highlight {
+            color: var(--orange);
+            display: inline-block;
+            animation: wave 2s ease-in-out infinite;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 500px;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .btn-groovy {
+            padding: 1.25rem 2.5rem;
+            background: var(--orange);
+            color: var(--bg-cream);
+            font-family: var(--font-display);
+            font-size: 1.125rem;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 6px 6px 0 var(--brown-dark);
+        }
+
+        .btn-groovy:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 9px 9px 0 var(--brown-dark);
+        }
+
+        .btn-outline {
+            padding: 1.25rem 2.5rem;
+            background: transparent;
+            color: var(--brown-dark);
+            font-family: var(--font-display);
+            font-size: 1.125rem;
+            border: 3px solid var(--brown-dark);
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: var(--brown-dark);
+            color: var(--bg-cream);
+        }
+
+        /* ROTATING BADGE */
+        .rotating-badge {
+            position: absolute;
+            right: 10%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 200px;
+            height: 200px;
+            animation: spin-slow 20s linear infinite;
+        }
+
+        .rotating-badge svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .rotating-badge text {
+            font-family: var(--font-display);
+            font-size: 14px;
+            fill: var(--brown-dark);
+        }
+
+        /* MARQUEE */
+        .marquee-section {
+            padding: 1.5rem 0;
+            background: var(--orange);
+            overflow: hidden;
+        }
+
+        .marquee {
+            display: flex;
+            animation: marquee 25s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .marquee-item {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--bg-cream);
+            padding: 0 3rem;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .marquee-item::after {
+            content: '✿';
+            font-size: 1.25rem;
+        }
+
+        /* SERVICES */
+        .services {
+            padding: 8rem 4rem;
+            background: var(--bg-warm);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: var(--mustard);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-radius: 100px;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--brown-dark);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--bg-cream);
+            border: 3px solid var(--brown);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            transition: all 0.4s;
+            position: relative;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: -8px;
+            bottom: -8px;
+            background: var(--brown);
+            border-radius: var(--radius-lg);
+            z-index: -1;
+            transition: all 0.4s;
+        }
+
+        .service-card:hover {
+            transform: translate(-4px, -4px);
+        }
+
+        .service-card:hover::before {
+            top: 12px;
+            left: 12px;
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--orange-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-name {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--brown-dark);
+            margin-bottom: 1rem;
+        }
+
+        .service-desc {
+            font-size: 0.9375rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ABOUT */
+        .about {
+            padding: 8rem 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .about-visual {
+            position: relative;
+        }
+
+        .about-image {
+            background: var(--mustard);
+            border-radius: var(--radius-lg);
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--brown-dark);
+            border: 3px solid var(--brown);
+        }
+
+        .about-sticker {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: var(--orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 0.875rem;
+            color: var(--bg-cream);
+            text-align: center;
+            line-height: 1.2;
+            top: -20px;
+            right: -20px;
+            animation: float 4s ease-in-out infinite;
+            border: 3px solid var(--brown-dark);
+        }
+
+        .about-content .section-tag {
+            background: var(--teal);
+            color: white;
+        }
+
+        .about-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--brown-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .about-text {
+            font-size: 1.0625rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* STATS */
+        .stats {
+            padding: 5rem 4rem;
+            background: var(--brown-dark);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+            color: var(--bg-cream);
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 6vw, 5rem);
+            color: var(--orange-light);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.8;
+        }
+
+        /* CTA */
+        .cta {
+            padding: 8rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .cta-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        .cta-shape-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--orange-light);
+            top: -50px;
+            left: -50px;
+        }
+
+        .cta-shape-2 {
+            width: 200px;
+            height: 200px;
+            background: var(--teal);
+            bottom: -50px;
+            right: 10%;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            color: var(--brown-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 500px;
+            margin: 0 auto 3rem;
+        }
+
+        /* CONTACT */
+        .contact {
+            padding: 8rem 4rem;
+            background: var(--bg-warm);
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 6rem;
+        }
+
+        .contact-info h3 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: var(--brown-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: var(--bg-cream);
+            border: 2px solid var(--brown);
+            border-radius: var(--radius);
+            transition: all 0.3s;
+        }
+
+        .contact-link:hover {
+            background: var(--orange);
+            color: var(--bg-cream);
+            border-color: var(--orange);
+        }
+
+        .contact-form {
+            background: var(--bg-cream);
+            border: 3px solid var(--brown);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--brown-dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: var(--bg-warm);
+            border: 2px solid var(--brown);
+            border-radius: var(--radius);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--text);
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--orange);
+            background: var(--bg-cream);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            padding: 1.25rem 3rem;
+            background: var(--orange);
+            color: var(--bg-cream);
+            font-family: var(--font-display);
+            font-size: 1.125rem;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 4px 4px 0 var(--brown-dark);
+            align-self: flex-start;
+        }
+
+        .submit-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 var(--brown-dark);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 4rem;
+            background: var(--brown-dark);
+            color: var(--bg-cream);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-tagline {
+            opacity: 0.7;
+            font-size: 0.9375rem;
+        }
+
+        .footer-col h4 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--orange-light);
+        }
+
+        .footer-col a {
+            display: block;
+            opacity: 0.7;
+            margin-bottom: 0.75rem;
+            transition: opacity 0.3s;
+        }
+
+        .footer-col a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+            opacity: 0.6;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            header, .hero, .services, .about, .cta, .contact {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact {
+                grid-template-columns: 1fr;
+            }
+
+            .rotating-badge {
+                display: none;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="logo">
+            <span class="logo-icon">☀</span>
+            Grassroots
+        </div>
+        <nav>
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#work">Work</a>
+            <a href="#contact" class="nav-cta">Let's Talk</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-shape hero-shape-1"></div>
+            <div class="hero-shape hero-shape-2"></div>
+            <div class="hero-shape hero-shape-3"></div>
+        </div>
+        <div class="hero-content">
+            <span class="hero-badge">Dubai's Grooviest Agency</span>
+            <h1 class="hero-title">
+                Rather Be <span class="highlight">Dead</span> Than Unfollowed
+            </h1>
+            <p class="hero-subtitle">Far out social media that gets people talking. We're content-led, forward-thinking, and totally obsessed with results.</p>
+            <div class="hero-cta">
+                <button class="btn-groovy">Start Something Groovy</button>
+                <button class="btn-outline">See Our Work</button>
+            </div>
+        </div>
+        <div class="rotating-badge">
+            <svg viewBox="0 0 200 200">
+                <path id="circlePath" fill="none" d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0"/>
+                <text>
+                    <textPath href="#circlePath">✿ SOCIAL MEDIA ✿ CONTENT ✿ VIBES ✿ GROWTH ✿ </textPath>
+                </text>
+            </svg>
+        </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-section">
+        <div class="marquee">
+            <span class="marquee-item">Social Media</span>
+            <span class="marquee-item">Content Creation</span>
+            <span class="marquee-item">Paid Ads</span>
+            <span class="marquee-item">Web Design</span>
+            <span class="marquee-item">Branding</span>
+            <span class="marquee-item">Good Vibes</span>
+            <span class="marquee-item">Social Media</span>
+            <span class="marquee-item">Content Creation</span>
+            <span class="marquee-item">Paid Ads</span>
+            <span class="marquee-item">Web Design</span>
+            <span class="marquee-item">Branding</span>
+            <span class="marquee-item">Good Vibes</span>
+        </div>
+    </div>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <span class="section-tag">What We Do</span>
+            <h2 class="section-title">Services That Shine</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3 class="service-name">Social Media Management</h3>
+                <p class="service-desc">Strategy, content calendars, community vibes, and analytics. We handle your socials while you do your thing.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎬</div>
+                <h3 class="service-name">Content Creation</h3>
+                <p class="service-desc">Scroll-stopping visuals, reels, TikToks, and photography that makes feeds look far out.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📈</div>
+                <h3 class="service-name">Paid Advertising</h3>
+                <p class="service-desc">Meta, Google, TikTok ads that convert like crazy. Real results, not just groovy metrics.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🌐</div>
+                <h3 class="service-name">Website Design</h3>
+                <p class="service-desc">Fast, beautiful websites that turn visitors into fans. Shopify, custom builds, whatever you need.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">✨</div>
+                <h3 class="service-name">Branding</h3>
+                <p class="service-desc">Logos, brand vibes, visual identity systems. We make brands people can't forget.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💬</div>
+                <h3 class="service-name">Email Marketing</h3>
+                <p class="service-desc">Automated flows and campaigns that turn subscribers into superfans.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="about-visual">
+            <div class="about-image">[ Team Photo ]</div>
+            <div class="about-sticker">100% Good Vibes</div>
+        </div>
+        <div class="about-content">
+            <span class="section-tag">Who We Are</span>
+            <h2 class="about-title">We're Not Like Other Agencies, Baby</h2>
+            <p class="about-text">Grassroots Creative started because social media marketing in Dubai was getting stale. Too many agencies playing it safe, too much boring content, not enough soul.</p>
+            <p class="about-text">We're a crew of strategists, creators, and performance freaks who actually care about your growth. Based in Dubai, spreading good vibes globally.</p>
+            <button class="btn-groovy">Get To Know Us</button>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+        <div class="stat">
+            <div class="stat-number">50M+</div>
+            <div class="stat-label">Monthly Reach</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">200+</div>
+            <div class="stat-label">Happy Brands</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">4.2x</div>
+            <div class="stat-label">Average ROAS</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">Good Vibes</div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="cta-shapes">
+            <div class="cta-shape cta-shape-1"></div>
+            <div class="cta-shape cta-shape-2"></div>
+        </div>
+        <div class="cta-content">
+            <h2 class="cta-title">Ready To Get Groovy?</h2>
+            <p class="cta-subtitle">Let's create something far out together. Your competitors won't know what hit 'em.</p>
+            <button class="btn-groovy">Start Your Journey</button>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="contact-info">
+            <h3>Let's Connect</h3>
+            <p>Ready to take your brand to the next level? Drop us a line and let's make magic happen.</p>
+            <div class="contact-links">
+                <a href="mailto:hello@grassrootscreativeagency.com" class="contact-link">
+                    <span>✉</span>
+                    hello@grassrootscreativeagency.com
+                </a>
+                <a href="#" class="contact-link">
+                    <span>📍</span>
+                    Dubai, UAE
+                </a>
+            </div>
+        </div>
+        <div class="contact-form">
+            <form name="contact" method="POST" data-netlify="true">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Tell Us Your Vision</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send It ✨</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div>
+                <div class="footer-brand">Grassroots ☀</div>
+                <p class="footer-tagline">Rather be dead than unfollowed.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <a href="#">Social Media</a>
+                <a href="#">Content Creation</a>
+                <a href="#">Paid Ads</a>
+                <a href="#">Web Design</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="#">About</a>
+                <a href="#">Work</a>
+                <a href="#">Blog</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <a href="#">Instagram</a>
+                <a href="#">TikTok</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2024 Grassroots Creative Agency</span>
+            <span>Made with ☀ in Dubai</span>
+        </div>
+    </footer>
+
+    <script>
+        // SMOOTH SCROLL
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // SCROLL ANIMATIONS
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.service-card, .stat, .about-content, .about-visual').forEach((el, i) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = `opacity 0.6s ease ${i * 0.1}s, transform 0.6s ease ${i * 0.1}s`;
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

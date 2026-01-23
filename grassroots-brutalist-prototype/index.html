@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRASSROOTS CREATIVE — Rather Be Dead Than Unfollowed</title>
+    <meta name="description" content="Dubai's most unapologetically bold social media agency. Content-led, forward-thinking, results-obsessed.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --white: #f5f5f0;
+            --accent: #ff3d00;
+            --accent-alt: #00ff88;
+            --grey: #666;
+            --border: 2px solid var(--black);
+
+            --font-display: 'Bebas Neue', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-body: 'Space Grotesk', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: var(--black);
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--white);
+            color: var(--black);
+            overflow-x: hidden;
+            cursor: crosshair;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* GLITCH EFFECT */
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        @keyframes glitch-color {
+            0% { text-shadow: 2px 0 var(--accent), -2px 0 var(--accent-alt); }
+            50% { text-shadow: -2px 0 var(--accent), 2px 0 var(--accent-alt); }
+            100% { text-shadow: 2px 0 var(--accent), -2px 0 var(--accent-alt); }
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--white);
+            border-bottom: var(--border);
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            position: relative;
+            padding: 0.25rem 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s cubic-bezier(0.87, 0, 0.13, 1);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: var(--border);
+        }
+
+        .hero-left {
+            padding: 8rem 4rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-left::before {
+            content: 'GRC';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: var(--font-display);
+            font-size: 40vw;
+            color: var(--black);
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .hero-tagline {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 7rem);
+            line-height: 0.9;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .hero-tagline:hover {
+            animation: glitch 0.3s ease;
+        }
+
+        .hero-tagline .highlight {
+            color: var(--accent);
+            display: inline-block;
+        }
+
+        .hero-tagline .highlight:hover {
+            animation: glitch-color 0.2s ease infinite;
+        }
+
+        .hero-sub {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            margin-top: 3rem;
+            max-width: 400px;
+            line-height: 1.8;
+            color: var(--grey);
+        }
+
+        .hero-sub strong {
+            color: var(--black);
+        }
+
+        .hero-right {
+            background: var(--black);
+            color: var(--white);
+            padding: 8rem 4rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .hero-right::after {
+            content: '↘';
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-size: 4rem;
+            opacity: 0.3;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .location-tag {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            opacity: 0.5;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .stat {
+            border-left: 2px solid var(--accent);
+            padding-left: 1rem;
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            line-height: 1;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 0.5rem;
+            opacity: 0.7;
+        }
+
+        /* MARQUEE */
+        .marquee-wrapper {
+            overflow: hidden;
+            background: var(--accent);
+            color: var(--black);
+            padding: 1rem 0;
+            border-bottom: var(--border);
+        }
+
+        .marquee {
+            display: flex;
+            animation: marquee 20s linear infinite;
+            width: max-content;
+        }
+
+        .marquee:hover {
+            animation-play-state: paused;
+        }
+
+        .marquee-item {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0 3rem;
+            white-space: nowrap;
+        }
+
+        .marquee-item::after {
+            content: '●';
+            margin-left: 3rem;
+        }
+
+        /* SERVICES */
+        .services {
+            padding: 6rem 0;
+            border-bottom: var(--border);
+        }
+
+        .section-header {
+            padding: 0 4rem;
+            margin-bottom: 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 4rem);
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            color: var(--grey);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .service-card {
+            border: var(--border);
+            border-left: none;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.87, 0, 0.13, 1);
+            cursor: pointer;
+        }
+
+        .service-card:first-child {
+            border-left: var(--border);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--black);
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.87, 0, 0.13, 1);
+            z-index: 0;
+        }
+
+        .service-card:hover::before {
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            color: var(--white);
+        }
+
+        .service-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-index {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--grey);
+            margin-bottom: 2rem;
+            transition: color 0.4s;
+        }
+
+        .service-card:hover .service-index {
+            color: var(--accent);
+        }
+
+        .service-name {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .service-desc {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            line-height: 1.8;
+            color: var(--grey);
+            transition: color 0.4s;
+        }
+
+        .service-card:hover .service-desc {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .service-arrow {
+            font-size: 2rem;
+            margin-top: 2rem;
+            transform: rotate(-45deg);
+            display: inline-block;
+            transition: transform 0.4s cubic-bezier(0.87, 0, 0.13, 1);
+        }
+
+        .service-card:hover .service-arrow {
+            transform: rotate(0deg);
+            color: var(--accent);
+        }
+
+        /* ABOUT SECTION */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 80vh;
+            border-bottom: var(--border);
+        }
+
+        .about-left {
+            background: var(--black);
+            color: var(--white);
+            padding: 6rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .about-left::before {
+            content: '"';
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            font-family: var(--font-display);
+            font-size: 20rem;
+            line-height: 1;
+            opacity: 0.1;
+            color: var(--accent);
+        }
+
+        .about-quote {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            text-transform: uppercase;
+            line-height: 1.1;
+            position: relative;
+        }
+
+        .about-quote .accent {
+            color: var(--accent);
+        }
+
+        .about-right {
+            padding: 6rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-left: var(--border);
+        }
+
+        .about-text {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            line-height: 2;
+            color: var(--grey);
+            max-width: 500px;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text strong {
+            color: var(--black);
+        }
+
+        /* CLIENTS */
+        .clients {
+            padding: 6rem 4rem;
+            border-bottom: var(--border);
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            background: var(--black);
+            margin-top: 4rem;
+        }
+
+        .client-cell {
+            background: var(--white);
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            color: var(--grey);
+            transition: all 0.3s;
+            cursor: default;
+        }
+
+        .client-cell:hover {
+            background: var(--black);
+            color: var(--accent);
+        }
+
+        /* CTA */
+        .cta {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            min-height: 60vh;
+            border-bottom: var(--border);
+        }
+
+        .cta-left {
+            padding: 6rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: var(--border);
+        }
+
+        .cta-title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 6rem);
+            text-transform: uppercase;
+            line-height: 0.95;
+        }
+
+        .cta-title .outline {
+            -webkit-text-stroke: 2px var(--black);
+            color: transparent;
+        }
+
+        .cta-right {
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .cta-right:hover {
+            background: var(--black);
+        }
+
+        .cta-right:hover .cta-arrow {
+            color: var(--accent);
+            transform: scale(1.2);
+        }
+
+        .cta-arrow {
+            font-size: 8rem;
+            transition: all 0.4s cubic-bezier(0.87, 0, 0.13, 1);
+        }
+
+        /* CONTACT FORM */
+        .contact {
+            padding: 6rem 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            border-bottom: var(--border);
+        }
+
+        .contact-info h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-link {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border: var(--border);
+            transition: all 0.3s;
+        }
+
+        .contact-link:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            border: var(--border);
+            background: transparent;
+            transition: all 0.3s;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            background: var(--black);
+            color: var(--white);
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 1.5rem 3rem;
+            background: var(--black);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .submit-btn::after {
+            content: '→';
+            position: absolute;
+            right: -30px;
+            transition: right 0.3s;
+        }
+
+        .submit-btn:hover {
+            padding-right: 4rem;
+            background: var(--accent);
+            color: var(--black);
+        }
+
+        .submit-btn:hover::after {
+            right: 1.5rem;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 4rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        .footer-brand span {
+            color: var(--accent);
+        }
+
+        .footer-tagline {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            margin-top: 1rem;
+            opacity: 0.5;
+        }
+
+        .footer-col h4 {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-col a {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            margin-bottom: 0.75rem;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .footer-col a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            grid-column: 1 / -1;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            opacity: 0.5;
+        }
+
+        /* CURSOR FOLLOWER */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s, width 0.3s, height 0.3s;
+            mix-blend-mode: difference;
+        }
+
+        .cursor.hover {
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            opacity: 0.5;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-left {
+                border-right: none;
+                border-bottom: var(--border);
+                min-height: 70vh;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                border-left: var(--border);
+                border-bottom: none;
+            }
+
+            .service-card:last-child {
+                border-bottom: var(--border);
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .about-right {
+                border-left: none;
+                border-top: var(--border);
+            }
+
+            .clients-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cta {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-left {
+                border-right: none;
+                border-bottom: var(--border);
+            }
+
+            .contact {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero-left,
+            .hero-right,
+            .about-left,
+            .about-right,
+            .cta-left,
+            .contact,
+            .section-header {
+                padding: 4rem 2rem;
+            }
+
+            .clients-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cursor {
+                display: none;
+            }
+        }
+
+        /* LOADING ANIMATION */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--black);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-text {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        .loader-text span {
+            display: inline-block;
+            animation: glitch-color 0.3s ease infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- LOADER -->
+    <div class="loader">
+        <div class="loader-text">
+            <span>GRASSROOTS</span>
+        </div>
+    </div>
+
+    <!-- CUSTOM CURSOR -->
+    <div class="cursor"></div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">GRASSROOTS<span>_</span>CREATIVE</div>
+        <nav>
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#clients">Work</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-left">
+            <h1 class="hero-tagline">
+                Rather Be<br>
+                <span class="highlight">Dead</span> Than<br>
+                Unfollowed
+            </h1>
+            <p class="hero-sub">
+                <strong>Content-led. Forward-thinking.</strong><br>
+                We're Dubai's most unapologetically bold social media agency. No fluff. No corporate speak. Just results that make your competitors nervous.
+            </p>
+        </div>
+        <div class="hero-right">
+            <div class="location-tag">Dubai, UAE // Est. 2019</div>
+            <div class="stats-grid">
+                <div class="stat">
+                    <div class="stat-number">50M+</div>
+                    <div class="stat-label">Monthly Reach</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">Brands Scaled</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">4.2x</div>
+                    <div class="stat-label">Avg. ROAS</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Boring Campaigns</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-wrapper">
+        <div class="marquee">
+            <span class="marquee-item">Social Media</span>
+            <span class="marquee-item">Content Creation</span>
+            <span class="marquee-item">Paid Ads</span>
+            <span class="marquee-item">Web Design</span>
+            <span class="marquee-item">Branding</span>
+            <span class="marquee-item">Email Marketing</span>
+            <span class="marquee-item">Social Media</span>
+            <span class="marquee-item">Content Creation</span>
+            <span class="marquee-item">Paid Ads</span>
+            <span class="marquee-item">Web Design</span>
+            <span class="marquee-item">Branding</span>
+            <span class="marquee-item">Email Marketing</span>
+        </div>
+    </div>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <h2 class="section-title">What We Do</h2>
+            <span class="section-number">[001]</span>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-index">01/</div>
+                <h3 class="service-name">Social Media<br>Management</h3>
+                <p class="service-desc">Strategy, content calendars, community management, and analytics. We handle your socials so you can focus on running your business.</p>
+                <span class="service-arrow">→</span>
+            </div>
+            <div class="service-card">
+                <div class="service-index">02/</div>
+                <h3 class="service-name">Content<br>Creation</h3>
+                <p class="service-desc">Scroll-stopping visuals, reels, TikToks, and photography. Content that doesn't just fill feeds—it dominates them.</p>
+                <span class="service-arrow">→</span>
+            </div>
+            <div class="service-card">
+                <div class="service-index">03/</div>
+                <h3 class="service-name">Paid Ads &<br>Performance</h3>
+                <p class="service-desc">Meta, Google, TikTok ads that actually convert. We obsess over ROAS so you don't have to burn cash on vanity metrics.</p>
+                <span class="service-arrow">→</span>
+            </div>
+        </div>
+        <div class="services-grid" style="border-top: none;">
+            <div class="service-card">
+                <div class="service-index">04/</div>
+                <h3 class="service-name">Website &<br>E-Commerce</h3>
+                <p class="service-desc">Fast, conversion-optimized websites that look as good as they perform. Shopify, custom builds, whatever you need.</p>
+                <span class="service-arrow">→</span>
+            </div>
+            <div class="service-card">
+                <div class="service-index">05/</div>
+                <h3 class="service-name">Branding &<br>Identity</h3>
+                <p class="service-desc">Logos, brand guidelines, visual identity systems. We build brands people remember and competitors envy.</p>
+                <span class="service-arrow">→</span>
+            </div>
+            <div class="service-card">
+                <div class="service-index">06/</div>
+                <h3 class="service-name">Email & WhatsApp<br>Marketing</h3>
+                <p class="service-desc">Automated flows, campaigns, and direct messaging that turn subscribers into customers and customers into fans.</p>
+                <span class="service-arrow">→</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="about-left">
+            <p class="about-quote">
+                We don't do <span class="accent">safe</span>.<br>
+                We don't do <span class="accent">boring</span>.<br>
+                We do results.
+            </p>
+        </div>
+        <div class="about-right">
+            <div class="about-text">
+                <p><strong>Grassroots Creative</strong> started with a simple belief: social media marketing in Dubai was broken. Too many agencies hiding behind vanity metrics, too much generic content, too little actual impact.</p>
+                <p>We built something different. A team of strategists, creators, and performance marketers who actually give a damn about your growth. We're not here to make pretty posts—we're here to move needles.</p>
+                <p>Based in <strong>Dubai</strong>, working globally. Small enough to care, experienced enough to deliver.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLIENTS -->
+    <section class="clients" id="clients">
+        <div class="section-header">
+            <h2 class="section-title">Brands We've Worked With</h2>
+            <span class="section-number">[002]</span>
+        </div>
+        <div class="clients-grid">
+            <div class="client-cell">[CLIENT LOGO]</div>
+            <div class="client-cell">[CLIENT LOGO]</div>
+            <div class="client-cell">[CLIENT LOGO]</div>
+            <div class="client-cell">[CLIENT LOGO]</div>
+            <div class="client-cell">[CLIENT LOGO]</div>
+            <div class="client-cell">[CLIENT LOGO]</div>
+            <div class="client-cell">[CLIENT LOGO]</div>
+            <div class="client-cell">[CLIENT LOGO]</div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="cta-left">
+            <h2 class="cta-title">
+                Ready To<br>
+                <span class="outline">Stop Being</span><br>
+                Forgettable?
+            </h2>
+        </div>
+        <a href="#contact" class="cta-right">
+            <span class="cta-arrow">↗</span>
+        </a>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="contact-info">
+            <h3>Let's Talk</h3>
+            <div class="contact-links">
+                <a href="mailto:hello@grassrootscreativeagency.com" class="contact-link">
+                    <span>✉</span>
+                    hello@grassrootscreativeagency.com
+                </a>
+                <a href="tel:+971000000000" class="contact-link">
+                    <span>☎</span>
+                    +971 XX XXX XXXX
+                </a>
+                <a href="#" class="contact-link">
+                    <span>◎</span>
+                    Dubai, UAE
+                </a>
+            </div>
+        </div>
+        <div class="contact-form">
+            <form name="contact" method="POST" data-netlify="true">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Tell Us About Your Project</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div>
+            <div class="footer-brand">Grassroots<span>_</span></div>
+            <p class="footer-tagline">Rather be dead than unfollowed.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Services</h4>
+            <a href="#">Social Media</a>
+            <a href="#">Content Creation</a>
+            <a href="#">Paid Advertising</a>
+            <a href="#">Web Design</a>
+            <a href="#">Branding</a>
+        </div>
+        <div class="footer-col">
+            <h4>Company</h4>
+            <a href="#">About Us</a>
+            <a href="#">Case Studies</a>
+            <a href="#">Blog</a>
+            <a href="#">Careers</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2024 Grassroots Creative Agency. All rights reserved.</span>
+            <span>Dubai, UAE</span>
+        </div>
+    </footer>
+
+    <script>
+        // LOADER
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelector('.loader').classList.add('hidden');
+            }, 1500);
+        });
+
+        // CUSTOM CURSOR
+        const cursor = document.querySelector('.cursor');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX - 10 + 'px';
+            cursor.style.top = e.clientY - 10 + 'px';
+        });
+
+        // Cursor hover effect on interactive elements
+        const interactiveElements = document.querySelectorAll('a, button, .service-card, .client-cell');
+
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
+        // SMOOTH SCROLL
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // INTERSECTION OBSERVER FOR ANIMATIONS
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for scroll animations
+        document.querySelectorAll('.service-card, .stat, .about-quote, .about-text').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // GLITCH EFFECT ON HOVER
+        const glitchText = document.querySelector('.hero-tagline');
+
+        glitchText.addEventListener('mouseenter', () => {
+            glitchText.style.animation = 'glitch 0.3s ease';
+            setTimeout(() => {
+                glitchText.style.animation = '';
+            }, 300);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grassroots Creative — Social Media Agency</title>
+    <meta name="description" content="Dubai's most unapologetically bold social media agency.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --black: #000000;
+            --white: #FFFFFF;
+            --grey-100: #F5F5F5;
+            --grey-200: #E5E5E5;
+            --grey-400: #A3A3A3;
+            --grey-600: #525252;
+            --red: #FF0000;
+
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+            --grid-gap: 1.5rem;
+            --section-padding: 6rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ::selection {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.5;
+            font-feature-settings: 'ss01' on, 'ss02' on;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* GRID SYSTEM */
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 var(--grid-gap);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: var(--grid-gap);
+        }
+
+        /* TYPOGRAPHY */
+        .text-xs { font-size: 0.75rem; line-height: 1.5; }
+        .text-sm { font-size: 0.875rem; line-height: 1.5; }
+        .text-base { font-size: 1rem; line-height: 1.5; }
+        .text-lg { font-size: 1.125rem; line-height: 1.4; }
+        .text-xl { font-size: 1.25rem; line-height: 1.4; }
+        .text-2xl { font-size: 1.5rem; line-height: 1.3; }
+        .text-3xl { font-size: 2rem; line-height: 1.2; }
+        .text-4xl { font-size: 3rem; line-height: 1.1; }
+        .text-5xl { font-size: 4rem; line-height: 1; }
+        .text-6xl { font-size: 6rem; line-height: 0.95; letter-spacing: -0.03em; }
+
+        .font-medium { font-weight: 500; }
+        .font-semibold { font-weight: 600; }
+        .font-bold { font-weight: 700; }
+
+        .uppercase { text-transform: uppercase; }
+        .tracking-wide { letter-spacing: 0.1em; }
+        .tracking-tight { letter-spacing: -0.02em; }
+
+        .text-grey { color: var(--grey-600); }
+        .text-muted { color: var(--grey-400); }
+        .text-red { color: var(--red); }
+
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: var(--white);
+            border-bottom: 1px solid var(--grey-200);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+            padding: 0 var(--grid-gap);
+        }
+
+        .logo {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        nav {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        nav a {
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--grey-600);
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--black);
+        }
+
+        .nav-cta {
+            padding: 0.625rem 1.25rem;
+            background: var(--black);
+            color: var(--white) !important;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: var(--grey-600);
+        }
+
+        /* HERO */
+        .hero {
+            padding: 10rem var(--grid-gap) var(--section-padding);
+            border-bottom: 1px solid var(--grey-200);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: var(--grid-gap);
+        }
+
+        .hero-content {
+            grid-column: 1 / 8;
+        }
+
+        .hero-meta {
+            grid-column: 9 / 13;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--grey-400);
+            margin-bottom: 2rem;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            margin-bottom: 3rem;
+        }
+
+        .hero-title .red {
+            color: var(--red);
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            color: var(--grey-600);
+            max-width: 480px;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .hero-stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--grey-400);
+            margin-top: 0.25rem;
+        }
+
+        /* MARQUEE */
+        .marquee-section {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--grey-200);
+            overflow: hidden;
+        }
+
+        .marquee {
+            display: flex;
+            animation: marquee 30s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .marquee-item {
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--grey-400);
+            padding: 0 3rem;
+            white-space: nowrap;
+        }
+
+        .marquee-item::after {
+            content: '—';
+            margin-left: 3rem;
+        }
+
+        /* SERVICES */
+        .services {
+            padding: var(--section-padding) var(--grid-gap);
+            border-bottom: 1px solid var(--grey-200);
+        }
+
+        .section-header {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: var(--grid-gap);
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--grey-200);
+        }
+
+        .section-number {
+            grid-column: 1 / 2;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--grey-400);
+        }
+
+        .section-title {
+            grid-column: 2 / 7;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .section-desc {
+            grid-column: 7 / 13;
+            font-size: 1rem;
+            color: var(--grey-600);
+            line-height: 1.6;
+        }
+
+        .services-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-item {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: var(--grid-gap);
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--grey-200);
+            align-items: baseline;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .service-item:hover {
+            background: var(--grey-100);
+            margin: 0 calc(var(--grid-gap) * -1);
+            padding-left: var(--grid-gap);
+            padding-right: var(--grid-gap);
+        }
+
+        .service-number {
+            grid-column: 1 / 2;
+            font-size: 0.75rem;
+            color: var(--grey-400);
+        }
+
+        .service-name {
+            grid-column: 2 / 6;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .service-desc {
+            grid-column: 6 / 11;
+            font-size: 0.9375rem;
+            color: var(--grey-600);
+            line-height: 1.6;
+        }
+
+        .service-arrow {
+            grid-column: 12 / 13;
+            font-size: 1.25rem;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s;
+            text-align: right;
+        }
+
+        .service-item:hover .service-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ABOUT */
+        .about {
+            padding: var(--section-padding) var(--grid-gap);
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: var(--grid-gap);
+        }
+
+        .about-header {
+            grid-column: 1 / 13;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .about-number {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--grey-400);
+        }
+
+        .about-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .about-content {
+            grid-column: 1 / 7;
+        }
+
+        .about-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+        }
+
+        .about-text {
+            font-size: 1rem;
+            color: var(--grey-400);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .about-quote {
+            grid-column: 8 / 13;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .quote-text {
+            font-size: 1.25rem;
+            font-weight: 500;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--grey-400);
+        }
+
+        /* STATS */
+        .stats {
+            padding: var(--section-padding) var(--grid-gap);
+            border-bottom: 1px solid var(--grey-200);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--grid-gap);
+        }
+
+        .stat-item {
+            padding: 2rem 0;
+            border-top: 1px solid var(--grey-200);
+        }
+
+        .stat-number {
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--grey-400);
+            margin-top: 1rem;
+        }
+
+        /* CTA */
+        .cta {
+            padding: var(--section-padding) var(--grid-gap);
+            border-bottom: 1px solid var(--grey-200);
+        }
+
+        .cta-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: var(--grid-gap);
+            align-items: center;
+        }
+
+        .cta-content {
+            grid-column: 1 / 8;
+        }
+
+        .cta-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .cta-action {
+            grid-column: 9 / 13;
+            text-align: right;
+        }
+
+        .btn-large {
+            display: inline-block;
+            padding: 1.25rem 3rem;
+            background: var(--black);
+            color: var(--white);
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: background 0.2s;
+        }
+
+        .btn-large:hover {
+            background: var(--red);
+        }
+
+        /* CONTACT */
+        .contact {
+            padding: var(--section-padding) var(--grid-gap);
+            border-bottom: 1px solid var(--grey-200);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: var(--grid-gap);
+        }
+
+        .contact-header {
+            grid-column: 1 / 13;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--grey-200);
+        }
+
+        .contact-info {
+            grid-column: 1 / 5;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            font-size: 0.9375rem;
+            color: var(--grey-600);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-detail {
+            font-size: 0.875rem;
+        }
+
+        .contact-detail-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--grey-400);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-form {
+            grid-column: 6 / 13;
+        }
+
+        .contact-form form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--grey-400);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 1rem 0;
+            border: none;
+            border-bottom: 1px solid var(--grey-200);
+            background: transparent;
+            font-family: var(--font);
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--black);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            grid-column: 1 / -1;
+            justify-self: start;
+            padding: 1rem 2.5rem;
+            background: var(--black);
+            color: var(--white);
+            border: none;
+            font-family: var(--font);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: var(--red);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 3rem var(--grid-gap);
+            background: var(--grey-100);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: var(--grid-gap);
+        }
+
+        .footer-brand {
+            grid-column: 1 / 4;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-tagline {
+            font-size: 0.875rem;
+            color: var(--grey-400);
+        }
+
+        .footer-col {
+            grid-column: span 2;
+        }
+
+        .footer-col h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--grey-400);
+            margin-bottom: 1rem;
+        }
+
+        .footer-col a {
+            display: block;
+            font-size: 0.875rem;
+            color: var(--grey-600);
+            margin-bottom: 0.5rem;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: var(--black);
+        }
+
+        .footer-bottom {
+            grid-column: 1 / -1;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--grey-200);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--grey-400);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .hero-content { grid-column: 1 / 13; }
+            .hero-meta { grid-column: 1 / 13; margin-top: 3rem; }
+
+            .service-name { grid-column: 2 / 7; }
+            .service-desc { grid-column: 7 / 12; }
+
+            .about-content { grid-column: 1 / 13; }
+            .about-quote { grid-column: 1 / 13; margin-top: 2rem; }
+
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+
+            .cta-content { grid-column: 1 / 13; }
+            .cta-action { grid-column: 1 / 13; text-align: left; margin-top: 2rem; }
+
+            .contact-info { grid-column: 1 / 13; }
+            .contact-form { grid-column: 1 / 13; margin-top: 3rem; }
+
+            .footer-brand { grid-column: 1 / 13; margin-bottom: 2rem; }
+            .footer-col { grid-column: span 4; }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --section-padding: 4rem;
+            }
+
+            nav a:not(.nav-cta) { display: none; }
+
+            .service-item {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .service-arrow { display: none; }
+
+            .stats-grid { grid-template-columns: 1fr; }
+
+            .contact-form form { grid-template-columns: 1fr; }
+
+            .footer-col { grid-column: span 6; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-inner">
+            <div class="logo">Grassroots Creative</div>
+            <nav>
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <a href="#contact" class="nav-cta">Start Project</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-grid">
+            <div class="hero-content">
+                <p class="hero-eyebrow">Social Media Agency — Dubai, UAE</p>
+                <h1 class="hero-title">Rather Be<br><span class="red">Dead</span> Than<br>Unfollowed</h1>
+                <p class="hero-subtitle">Content-led, forward-thinking social media specialists. We build brands that demand attention and drive measurable results.</p>
+            </div>
+            <div class="hero-meta">
+                <div class="hero-stats">
+                    <div>
+                        <div class="hero-stat-number">50M+</div>
+                        <div class="hero-stat-label">Monthly Reach</div>
+                    </div>
+                    <div>
+                        <div class="hero-stat-number">200+</div>
+                        <div class="hero-stat-label">Brands Served</div>
+                    </div>
+                    <div>
+                        <div class="hero-stat-number">4.2×</div>
+                        <div class="hero-stat-label">Average ROAS</div>
+                    </div>
+                    <div>
+                        <div class="hero-stat-number">2019</div>
+                        <div class="hero-stat-label">Established</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-section">
+        <div class="marquee">
+            <span class="marquee-item">Social Media Management</span>
+            <span class="marquee-item">Content Creation</span>
+            <span class="marquee-item">Paid Advertising</span>
+            <span class="marquee-item">Website Design</span>
+            <span class="marquee-item">Brand Identity</span>
+            <span class="marquee-item">Email Marketing</span>
+            <span class="marquee-item">Social Media Management</span>
+            <span class="marquee-item">Content Creation</span>
+            <span class="marquee-item">Paid Advertising</span>
+            <span class="marquee-item">Website Design</span>
+            <span class="marquee-item">Brand Identity</span>
+            <span class="marquee-item">Email Marketing</span>
+        </div>
+    </div>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Services</h2>
+            <p class="section-desc">Comprehensive social media solutions designed to elevate your brand and drive measurable business outcomes.</p>
+        </div>
+        <div class="services-list">
+            <div class="service-item">
+                <span class="service-number">01</span>
+                <h3 class="service-name">Social Media Management</h3>
+                <p class="service-desc">Strategy, content calendars, community management, and performance analytics.</p>
+                <span class="service-arrow">→</span>
+            </div>
+            <div class="service-item">
+                <span class="service-number">02</span>
+                <h3 class="service-name">Content Creation</h3>
+                <p class="service-desc">Photography, videography, reels, and visual content that stops the scroll.</p>
+                <span class="service-arrow">→</span>
+            </div>
+            <div class="service-item">
+                <span class="service-number">03</span>
+                <h3 class="service-name">Paid Advertising</h3>
+                <p class="service-desc">Performance marketing across Meta, Google, and TikTok platforms.</p>
+                <span class="service-arrow">→</span>
+            </div>
+            <div class="service-item">
+                <span class="service-number">04</span>
+                <h3 class="service-name">Website & E-Commerce</h3>
+                <p class="service-desc">Conversion-optimized digital experiences and online stores.</p>
+                <span class="service-arrow">→</span>
+            </div>
+            <div class="service-item">
+                <span class="service-number">05</span>
+                <h3 class="service-name">Brand Identity</h3>
+                <p class="service-desc">Visual identity systems, guidelines, and brand strategy.</p>
+                <span class="service-arrow">→</span>
+            </div>
+            <div class="service-item">
+                <span class="service-number">06</span>
+                <h3 class="service-name">Email & WhatsApp Marketing</h3>
+                <p class="service-desc">Automated flows and campaigns that convert subscribers to customers.</p>
+                <span class="service-arrow">→</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-header">
+                    <span class="about-number">02</span>
+                    <span class="about-label">About</span>
+                </div>
+                <div class="about-content">
+                    <h2 class="about-title">We started Grassroots because social media marketing in Dubai needed to be better.</h2>
+                    <p class="about-text">Too many agencies hiding behind vanity metrics. Too much generic content. Too little actual impact on business outcomes.</p>
+                    <p class="about-text">We built something different—a team of strategists, creators, and performance marketers obsessed with driving real growth. Based in Dubai, working globally.</p>
+                </div>
+                <div class="about-quote">
+                    <p class="quote-text">"We don't do safe. We don't do boring. We do results that make your competitors nervous."</p>
+                    <span class="quote-author">— Grassroots Team</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">50M+</div>
+                <div class="stat-label">Monthly Reach</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">200+</div>
+                <div class="stat-label">Brands Served</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4.2×</div>
+                <div class="stat-label">Average ROAS</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">0</div>
+                <div class="stat-label">Boring Campaigns</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="cta-grid">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to stop being forgettable?</h2>
+            </div>
+            <div class="cta-action">
+                <a href="#contact" class="btn-large">Start a Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="contact-grid">
+            <div class="contact-header">
+                <span class="section-number">03</span>
+                <span class="section-title">Contact</span>
+            </div>
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <p>Ready to elevate your brand's social presence? Let's discuss how we can help.</p>
+                <div class="contact-details">
+                    <div class="contact-detail">
+                        <div class="contact-detail-label">Email</div>
+                        <a href="mailto:hello@grassrootscreativeagency.com">hello@grassrootscreativeagency.com</a>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-label">Location</div>
+                        <span>Dubai, UAE</span>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form name="contact" method="POST" data-netlify="true">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo">Grassroots Creative</div>
+                <p class="footer-tagline">Rather be dead than unfollowed.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <a href="#">Social Media</a>
+                <a href="#">Content</a>
+                <a href="#">Paid Ads</a>
+                <a href="#">Web Design</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="#">About</a>
+                <a href="#">Work</a>
+                <a href="#">Blog</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="footer-col">
+                <h4>Social</h4>
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">TikTok</a>
+                <a href="#">Twitter</a>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2024 Grassroots Creative Agency</span>
+                <span>Dubai, UAE</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // SMOOTH SCROLL
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // SCROLL ANIMATIONS
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.service-item, .stat-item, .about-content, .about-quote').forEach((el, i) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = `all 0.5s ease ${i * 0.05}s`;
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

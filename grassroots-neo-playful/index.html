@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRASSROOTS CREATIVE — Rather Be Dead Than Unfollowed</title>
+    <meta name="description" content="Dubai's most unapologetically bold social media agency.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --white: #FFFFFF;
+            --black: #1A1A1A;
+            --yellow: #FFE135;
+            --blue: #4361EE;
+            --pink: #FF6B9D;
+            --green: #00D67E;
+            --purple: #9B5DE5;
+            --orange: #FF8C42;
+            --bg: #F8F7F4;
+
+            --font-display: 'Lilita One', cursive;
+            --font-body: 'DM Sans', sans-serif;
+
+            --border-thick: 4px solid var(--black);
+            --shadow: 8px 8px 0 var(--black);
+            --shadow-sm: 4px 4px 0 var(--black);
+            --radius: 24px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ::selection {
+            background: var(--yellow);
+            color: var(--black);
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--black);
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ANIMATIONS */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+
+        @keyframes pop {
+            0% { transform: scale(0); }
+            80% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--white);
+            border-bottom: var(--border-thick);
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-dot {
+            width: 16px;
+            height: 16px;
+            background: var(--pink);
+            border-radius: 50%;
+            border: 2px solid var(--black);
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        nav {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        nav a {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            padding: 0.75rem 1.25rem;
+            border-radius: 100px;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        nav a:hover {
+            background: var(--yellow);
+            border-color: var(--black);
+        }
+
+        .nav-cta {
+            background: var(--blue) !important;
+            color: var(--white) !important;
+            border: var(--border-thick) !important;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-cta:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 var(--black);
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            padding: 8rem 3rem 4rem;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            background: var(--white);
+            border-bottom: var(--border-thick);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .shape {
+            position: absolute;
+            border: var(--border-thick);
+        }
+
+        .shape-1 {
+            width: 100px;
+            height: 100px;
+            background: var(--yellow);
+            border-radius: 50%;
+            top: 15%;
+            right: 5%;
+            animation: bounce 3s ease-in-out infinite;
+        }
+
+        .shape-2 {
+            width: 60px;
+            height: 60px;
+            background: var(--pink);
+            top: 60%;
+            left: 5%;
+            animation: wiggle 2s ease-in-out infinite;
+        }
+
+        .shape-3 {
+            width: 80px;
+            height: 80px;
+            background: var(--green);
+            border-radius: 50%;
+            bottom: 10%;
+            right: 30%;
+            animation: bounce 2.5s ease-in-out infinite 0.5s;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: var(--yellow);
+            border: var(--border-thick);
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.875rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .hero-badge::before {
+            content: '⚡';
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title .highlight {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: -5px;
+            right: -5px;
+            height: 20px;
+            background: var(--pink);
+            z-index: -1;
+            transform: rotate(-1deg);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #555;
+            max-width: 500px;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-fun {
+            padding: 1.25rem 2.5rem;
+            font-family: var(--font-display);
+            font-size: 1.125rem;
+            border: var(--border-thick);
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-fun:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0 var(--black);
+        }
+
+        .btn-primary {
+            background: var(--blue);
+            color: var(--white);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .hero-visual {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-card {
+            background: var(--purple);
+            border: var(--border-thick);
+            border-radius: var(--radius);
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            transform: rotate(3deg);
+            transition: transform 0.3s;
+        }
+
+        .hero-card:hover {
+            transform: rotate(0deg);
+        }
+
+        .hero-card-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--white);
+            margin-bottom: 2rem;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .hero-stat {
+            background: var(--white);
+            border: var(--border-thick);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: var(--blue);
+        }
+
+        .hero-stat-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #666;
+        }
+
+        /* MARQUEE */
+        .marquee-section {
+            padding: 1.25rem 0;
+            background: var(--yellow);
+            border-bottom: var(--border-thick);
+            overflow: hidden;
+        }
+
+        .marquee {
+            display: flex;
+            animation: marquee 20s linear infinite;
+        }
+
+        .marquee-item {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            padding: 0 2rem;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .marquee-item::after {
+            content: '★';
+            color: var(--pink);
+        }
+
+        /* SERVICES */
+        .services {
+            padding: 6rem 3rem;
+            background: var(--bg);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: var(--green);
+            border: var(--border-thick);
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border: var(--border-thick);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0 var(--black);
+        }
+
+        .service-card:nth-child(1) .service-icon { background: var(--yellow); }
+        .service-card:nth-child(2) .service-icon { background: var(--pink); }
+        .service-card:nth-child(3) .service-icon { background: var(--blue); color: white; }
+        .service-card:nth-child(4) .service-icon { background: var(--green); }
+        .service-card:nth-child(5) .service-icon { background: var(--purple); color: white; }
+        .service-card:nth-child(6) .service-icon { background: var(--orange); }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            border: var(--border-thick);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-name {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .service-desc {
+            font-size: 0.9375rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* ABOUT */
+        .about {
+            padding: 6rem 3rem;
+            background: var(--blue);
+            border-top: var(--border-thick);
+            border-bottom: var(--border-thick);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content {
+            color: var(--white);
+        }
+
+        .about-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: var(--yellow);
+            color: var(--black);
+            border: var(--border-thick);
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .about-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .about-text {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .about-visual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .about-card {
+            background: var(--white);
+            border: var(--border-thick);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .about-card:nth-child(2) {
+            transform: translateY(2rem);
+        }
+
+        .about-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-card-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-card-text {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        /* CTA */
+        .cta {
+            padding: 6rem 3rem;
+            background: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .cta .shape-1 {
+            top: 10%;
+            left: 5%;
+            background: var(--pink);
+        }
+
+        .cta .shape-2 {
+            bottom: 10%;
+            right: 5%;
+            background: var(--green);
+            border-radius: 50%;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-subtitle {
+            font-size: 1.25rem;
+            color: #666;
+            max-width: 500px;
+            margin: 0 auto 2.5rem;
+        }
+
+        /* CONTACT */
+        .contact {
+            padding: 6rem 3rem;
+            background: var(--bg);
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            border-top: var(--border-thick);
+        }
+
+        .contact-info h3 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: var(--white);
+            border: var(--border-thick);
+            border-radius: 16px;
+            font-weight: 600;
+            transition: all 0.2s;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-link:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 var(--black);
+        }
+
+        .contact-link-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--yellow);
+            border: 2px solid var(--black);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-form {
+            background: var(--white);
+            border: var(--border-thick);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: var(--bg);
+            border: var(--border-thick);
+            border-radius: 12px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .form-group textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            padding: 1.25rem 2.5rem;
+            background: var(--blue);
+            color: var(--white);
+            font-family: var(--font-display);
+            font-size: 1.125rem;
+            border: var(--border-thick);
+            border-radius: 16px;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s;
+            align-self: flex-start;
+        }
+
+        .submit-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 var(--black);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 4rem 3rem;
+            background: var(--black);
+            color: var(--white);
+            border-top: var(--border-thick);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-tagline {
+            opacity: 0.7;
+        }
+
+        .footer-col h4 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--yellow);
+        }
+
+        .footer-col a {
+            display: block;
+            opacity: 0.7;
+            margin-bottom: 0.75rem;
+            transition: opacity 0.2s;
+        }
+
+        .footer-col a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+            opacity: 0.6;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content {
+                order: 2;
+            }
+
+            .hero-visual {
+                order: 1;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .contact {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 1.5rem;
+            }
+
+            nav a:not(.nav-cta) {
+                display: none;
+            }
+
+            .hero, .services, .about, .cta, .contact {
+                padding: 4rem 1.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-visual {
+                grid-template-columns: 1fr;
+            }
+
+            .about-card:nth-child(2) {
+                transform: none;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="logo">
+            <span class="logo-dot"></span>
+            Grassroots
+        </div>
+        <nav>
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#contact" class="nav-cta">Let's Talk!</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">Dubai's Boldest Agency</div>
+            <h1 class="hero-title">
+                Rather Be <span class="highlight">Dead</span> Than Unfollowed!
+            </h1>
+            <p class="hero-subtitle">We're content-led, forward-thinking social media specialists who make brands impossible to ignore. Let's make some noise!</p>
+            <div class="hero-buttons">
+                <button class="btn-fun btn-primary">Start a Project</button>
+                <button class="btn-fun btn-secondary">See Our Work</button>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-card">
+                <h3 class="hero-card-title">Real Results, Not Just Likes</h3>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">50M+</div>
+                        <div class="hero-stat-label">Monthly Reach</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">200+</div>
+                        <div class="hero-stat-label">Happy Brands</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">4.2x</div>
+                        <div class="hero-stat-label">Avg. ROAS</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">0</div>
+                        <div class="hero-stat-label">Boring Posts</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-section">
+        <div class="marquee">
+            <span class="marquee-item">Social Media</span>
+            <span class="marquee-item">Content Creation</span>
+            <span class="marquee-item">Paid Ads</span>
+            <span class="marquee-item">Web Design</span>
+            <span class="marquee-item">Branding</span>
+            <span class="marquee-item">Email Magic</span>
+            <span class="marquee-item">Social Media</span>
+            <span class="marquee-item">Content Creation</span>
+            <span class="marquee-item">Paid Ads</span>
+            <span class="marquee-item">Web Design</span>
+            <span class="marquee-item">Branding</span>
+            <span class="marquee-item">Email Magic</span>
+        </div>
+    </div>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <div class="section-badge">What We Do</div>
+            <h2 class="section-title">Services That Slap</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3 class="service-name">Social Media</h3>
+                <p class="service-desc">Strategy, calendars, community management. We handle your socials so you can chill.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎬</div>
+                <h3 class="service-name">Content Creation</h3>
+                <p class="service-desc">Scroll-stopping reels, TikToks, and visuals that make feeds pop.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📈</div>
+                <h3 class="service-name">Paid Ads</h3>
+                <p class="service-desc">Meta, Google, TikTok ads that convert. Real ROAS, not vanity metrics.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🌐</div>
+                <h3 class="service-name">Web Design</h3>
+                <p class="service-desc">Fast, pretty websites that turn visitors into customers.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">✨</div>
+                <h3 class="service-name">Branding</h3>
+                <p class="service-desc">Logos, colors, vibes. We make brands people remember.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💌</div>
+                <h3 class="service-name">Email Marketing</h3>
+                <p class="service-desc">Flows and campaigns that turn subscribers into superfans.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <div class="about-badge">Who We Are</div>
+            <h2 class="about-title">We're Not Your Average Agency</h2>
+            <p class="about-text">Social media in Dubai was getting boring. Too safe, too corporate, too meh. So we started Grassroots to shake things up.</p>
+            <p class="about-text">We're strategists, creators, and results nerds who actually care about your brand. No fluff, no BS—just growth that makes your competitors sweat.</p>
+        </div>
+        <div class="about-visual">
+            <div class="about-card">
+                <div class="about-card-icon">🎯</div>
+                <h4 class="about-card-title">Results-Obsessed</h4>
+                <p class="about-card-text">We track everything and optimize constantly.</p>
+            </div>
+            <div class="about-card">
+                <div class="about-card-icon">💡</div>
+                <h4 class="about-card-title">Creative AF</h4>
+                <p class="about-card-text">Bold ideas that make people stop scrolling.</p>
+            </div>
+            <div class="about-card">
+                <div class="about-card-icon">🤝</div>
+                <h4 class="about-card-title">Partner Vibes</h4>
+                <p class="about-card-text">We're an extension of your team, not a vendor.</p>
+            </div>
+            <div class="about-card">
+                <div class="about-card-icon">⚡</div>
+                <h4 class="about-card-title">Fast & Nimble</h4>
+                <p class="about-card-text">No red tape. Quick decisions, quick execution.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="cta-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+        </div>
+        <div class="cta-content">
+            <h2 class="cta-title">Ready to Go Viral?</h2>
+            <p class="cta-subtitle">Let's create something that makes people stop, stare, and smash that follow button.</p>
+            <button class="btn-fun btn-primary">Let's Do This!</button>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="contact-info">
+            <h3>Say Hello!</h3>
+            <p>Got a project in mind? Want to chat about your brand? We're all ears (and ideas).</p>
+            <div class="contact-links">
+                <a href="mailto:hello@grassrootscreativeagency.com" class="contact-link">
+                    <div class="contact-link-icon">✉</div>
+                    hello@grassrootscreativeagency.com
+                </a>
+                <a href="#" class="contact-link">
+                    <div class="contact-link-icon">📍</div>
+                    Dubai, UAE
+                </a>
+            </div>
+        </div>
+        <div class="contact-form">
+            <form name="contact" method="POST" data-netlify="true">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">What's on your mind?</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send It! 🚀</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div>
+                <div class="footer-brand">
+                    <span class="logo-dot" style="animation: none;"></span>
+                    Grassroots
+                </div>
+                <p class="footer-tagline">Rather be dead than unfollowed.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <a href="#">Social Media</a>
+                <a href="#">Content</a>
+                <a href="#">Paid Ads</a>
+                <a href="#">Web Design</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="#">About</a>
+                <a href="#">Work</a>
+                <a href="#">Blog</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="footer-col">
+                <h4>Socials</h4>
+                <a href="#">Instagram</a>
+                <a href="#">TikTok</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2024 Grassroots Creative</span>
+            <span>Made with 💛 in Dubai</span>
+        </div>
+    </footer>
+
+    <script>
+        // SCROLL ANIMATIONS
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0) rotate(0deg)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.service-card, .about-card, .hero-card').forEach((el, i) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = `all 0.5s ease ${i * 0.1}s`;
+            observer.observe(el);
+        });
+
+        // SMOOTH SCROLL
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
