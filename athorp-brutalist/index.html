@@ -557,9 +557,61 @@
                 display: none;
             }
         }
+
+        /* COLOR PICKER */
+        .color-picker {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            display: flex;
+            gap: 0.5rem;
+            padding: 0.75rem;
+            background: var(--black);
+            border: var(--border);
+        }
+
+        .color-swatch {
+            width: 28px;
+            height: 28px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .color-swatch:hover {
+            transform: scale(1.15);
+        }
+
+        .color-swatch.active {
+            border-color: var(--white);
+        }
+
+        .color-swatch[data-color="orange"] { background: #ff3d00; }
+        .color-swatch[data-color="cyan"] { background: #00f0ff; }
+        .color-swatch[data-color="green"] { background: #c6ff00; }
+        .color-swatch[data-color="magenta"] { background: #ff0080; }
+
+        @media (max-width: 768px) {
+            .color-picker {
+                bottom: 1rem;
+                right: 1rem;
+                padding: 0.5rem;
+            }
+            .color-swatch {
+                width: 24px;
+                height: 24px;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="color-picker">
+        <div class="color-swatch active" data-color="orange" title="Orange"></div>
+        <div class="color-swatch" data-color="cyan" title="Cyan"></div>
+        <div class="color-swatch" data-color="green" title="Green"></div>
+        <div class="color-swatch" data-color="magenta" title="Magenta"></div>
+    </div>
     <div class="cursor"></div>
 
     <header>
@@ -800,6 +852,32 @@
             el.style.transition = `all 0.5s ease ${i * 0.1}s`;
             observer.observe(el);
         });
+
+        // COLOR PICKER
+        const colors = {
+            orange: '#ff3d00',
+            cyan: '#00f0ff',
+            green: '#c6ff00',
+            magenta: '#ff0080'
+        };
+
+        document.querySelectorAll('.color-swatch').forEach(swatch => {
+            swatch.addEventListener('click', () => {
+                const color = swatch.dataset.color;
+                document.documentElement.style.setProperty('--accent', colors[color]);
+                document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+                swatch.classList.add('active');
+                localStorage.setItem('brutalist-color', color);
+            });
+        });
+
+        // Load saved color
+        const savedColor = localStorage.getItem('brutalist-color');
+        if (savedColor && colors[savedColor]) {
+            document.documentElement.style.setProperty('--accent', colors[savedColor]);
+            document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+            document.querySelector(`[data-color="${savedColor}"]`)?.classList.add('active');
+        }
     </script>
 </body>
 </html>
